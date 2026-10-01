@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    This PowerShell script ensures that the default permissions for the HKEY_LOCAL_MACHINE registry hive are maintained.
+    This PowerShell script ensures default permissions for the HKEY_LOCAL_MACHINE registry hives are maintained per STIG WN11-RG-000005.
 
 .NOTES
     Author          : Casey Ledbetter
@@ -12,7 +12,7 @@
     CVEs            : N/A
     Plugin IDs      : N/A
     STIG-ID         : WN11-RG-000005
-    Documentation   : https://stigaview.com/products/win11/v2r8/WN11-RG-000005/
+    Documentation   : https://stigaview.com/products/win11/v2r8/WN11-RG-000005
 
 .TESTED ON
     Date(s) Tested  : 
@@ -21,18 +21,24 @@
     PowerShell Ver. : 
 
 .USAGE
-    Run this script with Administrator privileges to reapply the default security template, which restores default registry permissions for HKLM.
+    Run as Administrator to restore inheritance and default access control lists for HKLM registry hives.
     Example syntax:
-    PS C:\> .\remediation_template(STIG-ID-WN11-RG-000005).ps1 
+    PS C:\> .\remediation_template(STIG-ID-WN11-RG-000005).ps1
 #>
 
-# Apply the default security template to restore baseline registry permissions
-$infPath = "$env:windir\inf\defltbase.inf"
-$dbPath = "$env:temp\defltbase.sdb"
+$hives = @(
+    "Registry::HKEY_LOCAL_MACHINE\SECURITY",
+    "Registry::HKEY_LOCAL_MACHINE\SOFTWARE",
+    "Registry::HKEY_LOCAL_MACHINE\SYSTEM"
+)
 
-if (Test-Path $infPath) {
-    secedit /configure /cfg $infPath /db $dbPath /verbose
-    Write-Host "Default security template applied successfully, restoring HKLM registry permissions."
-} else {
-    Write-Error "The default configuration file could not be found at $infPath."
+foreach ($hive in $hives) {
+    if (Test-Path $hive) {
+        $acl = Get-Acl -Path $hive
+        $acl.SetAccessRuleProtection($false, $true)
+        Set-Acl -Path $hive -AclObject $acl
+        Write-Host "Default permissions and inheritance restored for $hive."
+    } else {
+        Write-Warning "Registry path not found: $hive"
+    }
 }
