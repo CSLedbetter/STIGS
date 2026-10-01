@@ -12,11 +12,11 @@
     CVEs            : N/A
     Plugin IDs      : N/A
     STIG-ID         : WN11-AU-000500
-    Documentation   : https://stigaview.com/products/win11/v2r7/WN11-AU-000500/
+    Documentation   : https://stigaview.com/products/win11/v2r8/WN11-AU-000500
 
 .TESTED ON
-    Date(s) Tested  : 2026-10-01
-    Tested By       : Casey Ledbetter
+    Date(s) Tested  :
+    Tested By       :
     Systems Tested  : 
     PowerShell Ver. : 
 
