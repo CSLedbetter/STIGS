@@ -4,15 +4,15 @@ This PowerShell script enforces a BitLocker PIN for pre-boot authentication.
 
 .NOTES
 Author          : Casey Ledbetter
-LinkedIn        : [linkedin.com/in/casey-ledbetter](https://www.google.com/search?q=https%3A%2F%2Flinkedin.com%2Fin%2Fcasey-ledbetter)
-GitHub          : [github.com/CSLedbetter](https://www.google.com/search?q=https%3A%2F%2Fgithub.com%2FCSLedbetter)
+LinkedIn        : linkedin.com/in/casey-ledbetter
+GitHub          : github.com/CSLedbetter
 Date Created    : 2026-10-01
 Last Modified   : 2026-10-01
 Version         : 1.0
 CVEs            : N/A
 Plugin IDs      : V-253260
 STIG-ID         : WN11-00-000031
-Documentation   : [https://stigaview.com/products/win11/v2r8/WN11-00-000031/](https://stigaview.com/products/win11/v2r8/WN11-00-000031/)
+Documentation   : https://stigaview.com/products/win11/v2r8/WN11-00-000031
 
 .TESTED ON
 Date(s) Tested  :
