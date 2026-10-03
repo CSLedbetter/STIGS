@@ -37,7 +37,7 @@ if (-not (Test-Path $registryPath)) {
 }
 
 # Set the AllowBluetooth value
-Set-ItemProperty -Path $registryPath -Name $valueName -Value$valueData -Type DWord
+Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord
 
 # Output success message
 Write-Host "Registry value 'valueName'setto'valueData' at '$registryPath'."
