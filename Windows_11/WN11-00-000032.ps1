@@ -40,7 +40,7 @@ New-Item -Path $registryPath -Force
 
 # Set the MinimumPIN value
 
-Set-ItemProperty -Path $registryPath -Name $valueName -Value$valueData -Type DWord
+Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord
 
 # Output success message
 
